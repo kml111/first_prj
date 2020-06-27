@@ -1,0 +1,19 @@
+一、在url中添加name属性：
+url(r'^index',name='i')
+在网页中使用：
+<a href="{% url 'i' %}"></a>
+在反向解析中使用：
+from django.core.urlresolvers import reverse
+return redirect(reverse(i))
+
+二、路由分发
+导入app02中的url路径
+url(r'^index/',include(app02_url))
+app02的url文件：
+from app02 import views
+
+urlpattern = [
+url(r'^test', views.test)
+]
+
+通过/index/test访问
